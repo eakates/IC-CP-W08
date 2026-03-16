@@ -1,0 +1,114 @@
+---
+title: "Data Wrangling with R"
+subtitle: "IBM 320 Section 02"
+author: "Elijah Kates"
+date: "2026-03-11"
+format: 
+    html:
+        theme: cosmo
+        toc: true
+        toc-depth: 3
+        toc-location: left
+        embed-resources: true
+execute: 
+  freeze: auto
+---
+::: {callout-note}
+Note: This codebook will follow the structure and content of the published codebook of the project:  
+https://jmjung.quarto.pub/m05-1-principles-data-wrangling-with-tidyverse-in-r/
+:::
+
+# Overview
+
+## Learning Outcomes
+
+By the end of this module, you will be able to:
+
+- Describe the concept of Data Wrangling
+- Describe how Tibbles are different from data frames
+- Explain how to convert wide or long data to tidy data
+- Explain how to merge relational data sets using join functions (next module)
+- Explain how to use grouped mutates and filter together
+- Be familiar with major dplyr functions for transforming data
+- Create a new variable with `mutate()` and `case_when()`
+- Use the pipe operator to shape data for analysis and visualization
+
+## The textbook chapters to cover
+
+- Ch3: Data Transformation  
+- Ch5: Data Tidying  
+- Ch13: Numbers  
+
+# Introduction to Data Wrangling
+
+Data wrangling refers to the process of cleaning, transforming, and organizing raw data into a format that can be used for analysis.
+
+# Loading the Library
+
+```{r}
+library(tidyverse)
+```
+
+# What is Tidyverse
+
+The **tidyverse** is a collection of R packages designed for data science that share a common philosophy and grammar.
+
+Core packages include:
+
+- **ggplot2** for data visualization  
+- **dplyr** for data manipulation  
+- **tidyr** for data tidying  
+- **readr** for data import  
+- **purrr** for functional programming  
+- **tibble** for modern data frames  
+- **stringr** for string manipulation  
+- **forcats** for categorical variables  
+
+# Initial Data Preparation and Exploration
+
+```{r}
+install.packages("nycflights13")
+library(nycflights13)
+data()
+```
+
+# Data Wrangling in dplyr
+
+The **dplyr** package provides functions for manipulating data.
+
+The most common ones are:
+
+- `filter()` → choose rows
+- `select()` → choose columns
+- `mutate()` → create new variables
+- `summarise()` → aggregate values
+- `arrange()` → sort rows
+- `%>%` → pipe operator to chain commands
+
+# Example Dataset
+
+```{r}
+flights
+```
+
+```{r}
+glimpse(flights)
+```
+
+# Filtering Example
+
+```{r}
+flights %>%
+  filter(origin == "JFK")
+```
+
+# Summarizing Example
+
+```{r}
+flights %>%
+  group_by(carrier) %>%
+  summarise(
+    avg_delay = mean(arr_delay, na.rm = TRUE)
+  ) %>%
+  arrange(desc(avg_delay))
+```
