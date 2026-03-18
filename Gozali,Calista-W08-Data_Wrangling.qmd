@@ -14,7 +14,7 @@ execute:
 ---
 
 ::: callout-note
-**Note**: This codebook will follow structure and content of the published codebook for the project: [Data Wrangling with Tidyverse] https://jmjung.quarto.pub/m05-1-principles-data-wrangling-with-tidyverse-in-r/
+**Note**: This codebook will follow structure and content of the published codebook for the project: \[Data Wrangling with Tidyverse\] https://jmjung.quarto.pub/m05-1-principles-data-wrangling-with-tidyverse-in-r/
 :::
 
 # Overview
